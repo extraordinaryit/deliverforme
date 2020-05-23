@@ -21,7 +21,7 @@ jobs:
         env:
           POSTGRES_USER: extraordinaryit
           POSTGRES_PASSWORD: extraordinaryit
-          POSTGRES_DB: deliverformedb
+          POSTGRES_DB: deliverformedb-test
         ports:
           - 5555:5432
         # needed because the postgres container does not provide a healthcheck

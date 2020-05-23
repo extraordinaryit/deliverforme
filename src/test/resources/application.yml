@@ -8,10 +8,10 @@ logging:
 spring:
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/test
+    url: jdbc:postgresql://localhost:5432/deliverformedb-test
     username: extraordinaryit
     password: extraordinaryit
-    databaseName: test
+    databaseName: deliverformedb-test
     schemaName: deliverforme
     host: localhost
     port: 5555
