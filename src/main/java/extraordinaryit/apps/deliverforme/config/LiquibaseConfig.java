@@ -101,7 +101,6 @@ public class LiquibaseConfig {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setDataSource(loggingDbDataSource);
         liquibase.setChangeLog(changeLogName);
-        liquibase.setDefaultSchema(schema);
         liquibase.setContexts(liquibaseContext);
         HashMap<String, String> parameters = new HashMap<>();
         parameters.put("cortex.datasource.username=", userName);

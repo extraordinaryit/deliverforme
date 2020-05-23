@@ -12,7 +12,6 @@ spring:
     username: extraordinaryit
     password: extraordinaryit
     databaseName: deliverformedb-test
-    schemaName: deliverforme
     host: localhost
     port: 5555
     ssl:
