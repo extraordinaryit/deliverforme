@@ -5,102 +5,104 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-<!--    <changeSet author="Thabane" id="2">-->
-<!--        <sql dbms="postgresql" endDelimiter=";">-->
-<!--            CREATE TABLE deliverforme."user"-->
-<!--            (-->
-<!--            id bigint NOT NULL,-->
-<!--            email character varying(255),-->
-<!--            enabled boolean NOT NULL,-->
-<!--            name character varying(255),-->
-<!--            password character varying(255),-->
-<!--            surname character varying(255),-->
-<!--            token_expired boolean NOT NULL,-->
-<!--            CONSTRAINT user_pkey PRIMARY KEY (id)-->
-<!--            )-->
-<!--            WITH (-->
-<!--            OIDS=FALSE-->
-<!--            );-->
-<!--            ALTER TABLE deliverforme."user"-->
-<!--            OWNER TO extraordinaryit-->
+    <changeSet author="Thabane" id="2">
+        <sql dbms="postgresql" endDelimiter=";">
+            CREATE TABLE deliverforme."user"
+            (
+            id bigserial NOT NULL,
+            email character varying(255),
+            enabled boolean NOT NULL,
+            name character varying(255),
+            surname character varying(255),
+            token_expired boolean NOT NULL,
+            CONSTRAINT user_pkey PRIMARY KEY (id)
+            )
+            WITH (
+            OIDS=FALSE
+            );
+            ALTER TABLE deliverforme."user"
+            OWNER TO extraordinaryit
 
-<!--        </sql>-->
-<!--    </changeSet>-->
+        </sql>
+    </changeSet>
 
-<!--    <changeSet author="Thabane" id="3">-->
-<!--        <sql dbms="postgresql" endDelimiter=";">-->
+    <changeSet author="Thabane" id="3">
+        <sql dbms="postgresql" endDelimiter=";">
 
-<!--            CREATE TABLE deliverforme.role-->
-<!--            (-->
-<!--            id bigint NOT NULL,-->
-<!--            name character varying(255),-->
-<!--            CONSTRAINT role_pkey PRIMARY KEY (id)-->
-<!--            )-->
-<!--            WITH (-->
-<!--            OIDS=FALSE-->
-<!--            );-->
-<!--            ALTER TABLE deliverforme.role-->
-<!--            OWNER TO extraordinaryit-->
+            CREATE TABLE deliverforme.role
+            (
+            id bigserial NOT NULL,
+            name character varying(255),
+            CONSTRAINT role_pkey PRIMARY KEY (id)
+            )
+            WITH (
+            OIDS=FALSE
+            );
+            ALTER TABLE deliverforme.role
+            OWNER TO extraordinaryit
 
-<!--        </sql>-->
-<!--    </changeSet>-->
+        </sql>
+    </changeSet>
 
-<!--    <changeSet author="Thabane" id="4">-->
-<!--        <sql dbms="postgresql" endDelimiter=";">-->
-<!--            CREATE TABLE deliverforme.privilege-->
-<!--            (-->
-<!--            id bigint NOT NULL,-->
-<!--            name character varying(255),-->
-<!--            CONSTRAINT privilege_pkey PRIMARY KEY (id)-->
-<!--            )-->
-<!--            WITH (-->
-<!--            OIDS=FALSE-->
-<!--            );-->
-<!--            ALTER TABLE deliverforme.privilege-->
-<!--            OWNER TO extraordinaryit-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet author="Thabane" id="4">
+        <sql dbms="postgresql" endDelimiter=";">
+            CREATE TABLE deliverforme.privilege
+            (
+            id bigint NOT NULL,
+            name character varying(255),
+            CONSTRAINT privilege_pkey PRIMARY KEY (id)
+            )
+            WITH (
+            OIDS=FALSE
+            );
+            ALTER TABLE deliverforme.privilege
+            OWNER TO extraordinaryit
+        </sql>
+    </changeSet>
 
-<!--    <changeSet author="Thabane" id="5">-->
-<!--        <sql dbms="postgresql" endDelimiter=";">-->
-<!--            REATE TABLE deliverforme.roles_privileges-->
-<!--            (-->
-<!--            role_id bigint NOT NULL,-->
-<!--            privilege_id bigint NOT NULL,-->
-<!--            CONSTRAINT fk5yjwxw2gvfyu76j3rgqwo685u FOREIGN KEY (privilege_id)-->
-<!--            REFERENCES deliverforme.privilege (id) MATCH SIMPLE-->
-<!--            ON UPDATE NO ACTION ON DELETE NO ACTION,-->
-<!--            CONSTRAINT fk9h2vewsqh8luhfq71xokh4who FOREIGN KEY (role_id)-->
-<!--            REFERENCES deliverforme.role (id) MATCH SIMPLE-->
-<!--            ON UPDATE NO ACTION ON DELETE NO ACTION-->
-<!--            )-->
-<!--            WITH (-->
-<!--            OIDS=FALSE-->
-<!--            );-->
-<!--            ALTER TABLE deliverforme.roles_privileges-->
-<!--            OWNER TO extraordinaryit-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet author="Thabane" id="5">
+        <sql dbms="postgresql" endDelimiter=";">
 
-<!--    <changeSet author="Thabane" id="6">-->
-<!--        <sql dbms="postgresql" endDelimiter=";">-->
-<!--            CREATE TABLE deliverforme.users_roles-->
-<!--            (-->
-<!--            user_id bigint NOT NULL,-->
-<!--            role_id bigint NOT NULL,-->
-<!--            CONSTRAINT fkgd3iendaoyh04b95ykqise6qh FOREIGN KEY (user_id)-->
-<!--            REFERENCES deliverforme."user" (id) MATCH SIMPLE-->
-<!--            ON UPDATE NO ACTION ON DELETE NO ACTION,-->
-<!--            CONSTRAINT fkt4v0rrweyk393bdgt107vdx0x FOREIGN KEY (role_id)-->
-<!--            REFERENCES deliverforme.role (id) MATCH SIMPLE-->
-<!--            ON UPDATE NO ACTION ON DELETE NO ACTION-->
-<!--            )-->
-<!--            WITH (-->
-<!--            OIDS=FALSE-->
-<!--            );-->
-<!--            ALTER TABLE deliverforme.users_roles-->
-<!--            OWNER TO extraordinaryit-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+            CREATE TABLE deliverforme.roles_privileges
+            (
+            role_id bigint NOT NULL,
+            privilege_id bigint NOT NULL,
+            CONSTRAINT fk5yjwxw2gvfyu76j3rgqwo685u FOREIGN KEY (privilege_id)
+            REFERENCES deliverforme.privilege (id) MATCH SIMPLE
+            ON UPDATE NO ACTION ON DELETE NO ACTION,
+            CONSTRAINT fk9h2vewsqh8luhfq71xokh4who FOREIGN KEY (role_id)
+            REFERENCES deliverforme.role (id) MATCH SIMPLE
+            ON UPDATE NO ACTION ON DELETE NO ACTION
+            )
+            WITH (
+            OIDS=FALSE
+            );
+            ALTER TABLE deliverforme.roles_privileges
+            OWNER TO extraordinaryit
+
+        </sql>
+    </changeSet>
+
+    <changeSet author="Thabane" id="6">
+        <sql dbms="postgresql" endDelimiter=";">
+            CREATE TABLE deliverforme.users_roles
+            (
+            user_id bigint NOT NULL,
+            role_id bigint NOT NULL,
+            CONSTRAINT fkgd3iendaoyh04b95ykqise6qh FOREIGN KEY (user_id)
+            REFERENCES deliverforme."user" (id) MATCH SIMPLE
+            ON UPDATE NO ACTION ON DELETE NO ACTION,
+            CONSTRAINT fkt4v0rrweyk393bdgt107vdx0x FOREIGN KEY (role_id)
+            REFERENCES deliverforme.role (id) MATCH SIMPLE
+            ON UPDATE NO ACTION ON DELETE NO ACTION
+            )
+            WITH (
+            OIDS=FALSE
+            );
+            ALTER TABLE deliverforme.users_roles
+            OWNER TO extraordinaryit
+
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

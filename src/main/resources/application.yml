@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+logging:
+  file: ./logs/app.log
+  maxhistory: 30
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5555/deliverformedb
+    username: extraordinaryit
+    password: extraordinaryit
+    databaseName: deliverformedb
+    schemaName: deliverforme
+    host: localhost
+    port: 5555
+    ssl:
+      enabled: false
+    liquibase:
+      changelog: classpath:liquibase/databaseChangeLog.xml
+      contexts: local
+      liquibase-schema: deliverforme
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        hbm2ddl:
+          auto: update
+        default_schema: deliverforme
+        ddl-auto: create
