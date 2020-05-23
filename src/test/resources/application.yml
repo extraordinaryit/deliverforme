@@ -18,7 +18,7 @@ spring:
       enabled: false
     liquibase:
       changelog: classpath:liquibase/databaseChangeLog.xml
-      contexts: local
+      context: local
       liquibase-schema: deliverforme
 
   jpa:

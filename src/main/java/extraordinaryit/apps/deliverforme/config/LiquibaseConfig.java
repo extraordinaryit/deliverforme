@@ -41,10 +41,7 @@ public class LiquibaseConfig {
     @Value("${spring.datasource.liquibase.changelog}")
     private String changeLogName;
 
-    @Value("${spring.datasource.schemaName}")
-    private String schema;
-
-    @Value("${spring.datasource.liquibase.contexts}")
+    @Value("${spring.datasource.liquibase.context}")
     private String liquibaseContext;
 
     @Value("${spring.datasource.ssl.enabled}")
