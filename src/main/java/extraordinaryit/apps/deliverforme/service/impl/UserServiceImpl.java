@@ -9,7 +9,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void approveUser() {
+    public void approveDriverApplication() {
 
     }
 
