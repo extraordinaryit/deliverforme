@@ -15,12 +15,19 @@ public class UserToUserDTOConverter implements Converter<User, ApplicationUser> 
         applicationUser.setSurname(user.getSurname());
         applicationUser.setEmail(user.getEmail());
         applicationUser.setUserId(user.getId());
+        applicationUser.setEnabled(user.isEnabled());
         return applicationUser;
     }
 
     @Override
     public User reverseConvert(ApplicationUser applicationUser) {
-        return null;
+        User user = new User();
+        user.setEmail(applicationUser.getEmail());
+        user.setEnabled(applicationUser.isEnabled());
+        user.setName(applicationUser.getName());
+        user.setSurname(applicationUser.getSurname());
+        user.setTokenExpired(applicationUser.isTokenExpired());
+        return user;
     }
 
 }

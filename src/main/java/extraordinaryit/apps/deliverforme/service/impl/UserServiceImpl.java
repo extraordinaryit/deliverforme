@@ -2,6 +2,8 @@ package extraordinaryit.apps.deliverforme.service.impl;
 
 import extraordinaryit.apps.deliverforme.converter.impl.UserToUserDTOConverter;
 import extraordinaryit.apps.deliverforme.entity.User;
+import extraordinaryit.apps.deliverforme.model.base.Status;
+import extraordinaryit.apps.deliverforme.model.user.ApplicationUser;
 import extraordinaryit.apps.deliverforme.model.user.UserDTO;
 import extraordinaryit.apps.deliverforme.repository.UserRepository;
 import extraordinaryit.apps.deliverforme.service.UserService;
@@ -25,13 +27,19 @@ public class UserServiceImpl implements UserService {
     private UserToUserDTOConverter userToUserDTOConverter;
 
     @Override
-    public void registerUser(UserDTO userDTO) {
+    public UserDTO registerUser(ApplicationUser applicationUser) {
+        UserDTO userDTO = new UserDTO();
         try{
-//            User user = userToUserDTOConverter.reverseConvert(userDTO);
-//            this.userRepository.save(user);
+            User user = userToUserDTOConverter.reverseConvert(applicationUser);
+            this.userRepository.save(user);
+            userDTO.setPayload(applicationUser);
+            userDTO.setStatus(Status.SUCCESS);
         } catch (Exception e){
-
+            LOG.error(e.getMessage(), e);
+            userDTO.setStatus(Status.FAILURE);
+            userDTO.setMessage("Technical Error: Registration Failure");
         }
+        return userDTO;
     }
 
     @Override
@@ -54,16 +62,20 @@ public class UserServiceImpl implements UserService {
             Optional<User> userById = userRepository.findById(userIdL);
 
             if(userById.isPresent()) {
-                userDTO.setData(userToUserDTOConverter.convert(userById.get()));
-                userDTO.setStatus("");
-                userDTO.setMessage("SUCCESS");
+                userDTO.setPayload(userToUserDTOConverter.convert(userById.get()));
+                userDTO.setStatus(Status.SUCCESS);
+                userDTO.setMessage("");
                 return userDTO;
-            } else
-                throw new UsernameNotFoundException("User Id Invalid");
+            } else {
+                userDTO.setStatus(Status.FAILURE);
+                userDTO.setMessage("Invalid User Id");
+            }
 
         } catch (Exception e){
             LOG.error(e.getMessage(),e);
+            userDTO.setStatus(Status.FAILURE);
+            userDTO.setMessage("Technical Error");
         }
-        return null;
+        return userDTO;
     }
 }

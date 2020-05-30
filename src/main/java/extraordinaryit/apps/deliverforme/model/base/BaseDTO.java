@@ -1,10 +1,11 @@
 package extraordinaryit.apps.deliverforme.model.base;
 
-import lombok.*;
+
+import lombok.Data;
 
 @Data
 public class BaseDTO<T> {
     private String message;
-    private String status;
-    private T data;
+    private Status status;
+    private T payload;
 }
