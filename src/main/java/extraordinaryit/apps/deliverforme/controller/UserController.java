@@ -32,14 +32,13 @@ public class UserController {
         UserDTO userDTO;
         try{
             userDTO = userService.getUser(userId);
-            userDTO.setMessage("SUCCESS");
             return userDTO;
         } catch (Exception e){
             LOG.error(e.getMessage(),e);
-            userDTO = UserDTO.builder()
-            .message("Invalid User ID")
-            .status("FAILURE").build();
+//            userDTO = UserDTO.builder()
+//            .message("Invalid User ID")
+//            .status("FAILURE").build();
         }
-        return userDTO;
+        return new UserDTO();
     }
 }

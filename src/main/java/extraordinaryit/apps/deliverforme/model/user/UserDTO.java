@@ -1,27 +1,13 @@
 package extraordinaryit.apps.deliverforme.model.user;
 
 import extraordinaryit.apps.deliverforme.model.base.BaseDTO;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 
-@Getter
-@Setter
-public class UserDTO extends BaseDTO {
+@Data
+public class UserDTO extends BaseDTO<ApplicationUser> {
 
-    @Builder
-    public UserDTO(String name, String surname, String email, Long userId, String status,String message) {
-        super(message,status);
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.userId = userId;
+    public UserDTO() {
+        ApplicationUser b = getData();
     }
-
-    private String name;
-    private String surname;
-    private String email;
-    private Long userId;
-
 }

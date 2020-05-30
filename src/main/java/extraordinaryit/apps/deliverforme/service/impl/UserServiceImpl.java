@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserDTO userDTO) {
         try{
-            User user = userToUserDTOConverter.reverseConvert(userDTO);
-            this.userRepository.save(user);
+//            User user = userToUserDTOConverter.reverseConvert(userDTO);
+//            this.userRepository.save(user);
         } catch (Exception e){
 
         }
@@ -47,13 +47,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUser(String userId) {
 
+        UserDTO userDTO = new UserDTO();
+
         try{
             Long userIdL = Long.parseLong(userId);
             Optional<User> userById = userRepository.findById(userIdL);
 
-            if(userById.isPresent())
-                return userToUserDTOConverter.convert(userById.get());
-            else
+            if(userById.isPresent()) {
+                userDTO.setData(userToUserDTOConverter.convert(userById.get()));
+                userDTO.setStatus("");
+                userDTO.setMessage("SUCCESS");
+                return userDTO;
+            } else
                 throw new UsernameNotFoundException("User Id Invalid");
 
         } catch (Exception e){
