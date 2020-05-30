@@ -2,9 +2,11 @@ package extraordinaryit.apps.deliverforme.service.impl;
 
 import extraordinaryit.apps.deliverforme.converter.impl.UserToUserDTOConverter;
 import extraordinaryit.apps.deliverforme.entity.User;
-import extraordinaryit.apps.deliverforme.model.UserDTO;
+import extraordinaryit.apps.deliverforme.model.user.UserDTO;
 import extraordinaryit.apps.deliverforme.repository.UserRepository;
 import extraordinaryit.apps.deliverforme.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,8 @@ import java.util.Optional;
 
 @Component
 public class UserServiceImpl implements UserService {
+
+    private final static Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -51,8 +55,9 @@ public class UserServiceImpl implements UserService {
                 return userToUserDTOConverter.convert(userById.get());
             else
                 throw new UsernameNotFoundException("User Id Invalid");
+
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            LOG.error(e.getMessage(),e);
         }
         return null;
     }

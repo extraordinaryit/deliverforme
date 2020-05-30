@@ -1,7 +1,7 @@
 package extraordinaryit.apps.deliverforme.controller;
 
 import extraordinaryit.apps.deliverforme.entity.User;
-import extraordinaryit.apps.deliverforme.model.UserDTO;
+import extraordinaryit.apps.deliverforme.model.user.UserDTO;
 import extraordinaryit.apps.deliverforme.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +29,17 @@ public class UserController {
     @GetMapping(path = "/user/{userId}")
     public UserDTO getUser(@PathVariable("userId") String userId){
         LOG.info("Getting user "+userId);
+        UserDTO userDTO;
         try{
-            return userService.getUser(userId);
+            userDTO = userService.getUser(userId);
+            userDTO.setMessage("SUCCESS");
+            return userDTO;
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            LOG.error(e.getMessage(),e);
+            userDTO = UserDTO.builder()
+            .message("Invalid User ID")
+            .status("FAILURE").build();
         }
-        return null;
+        return userDTO;
     }
 }

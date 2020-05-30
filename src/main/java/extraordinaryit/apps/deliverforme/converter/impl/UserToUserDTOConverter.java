@@ -2,7 +2,7 @@ package extraordinaryit.apps.deliverforme.converter.impl;
 
 import extraordinaryit.apps.deliverforme.converter.Converter;
 import extraordinaryit.apps.deliverforme.entity.User;
-import extraordinaryit.apps.deliverforme.model.UserDTO;
+import extraordinaryit.apps.deliverforme.model.user.UserDTO;
 import org.springframework.stereotype.Component;
 
 @Component

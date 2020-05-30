@@ -1,6 +1,6 @@
 package extraordinaryit.apps.deliverforme.service;
 
-import extraordinaryit.apps.deliverforme.model.UserDTO;
+import extraordinaryit.apps.deliverforme.model.user.UserDTO;
 
 public interface UserService {
 
