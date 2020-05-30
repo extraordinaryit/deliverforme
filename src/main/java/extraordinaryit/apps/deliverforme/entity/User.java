@@ -1,5 +1,6 @@
 package extraordinaryit.apps.deliverforme.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;

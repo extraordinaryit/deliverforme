@@ -16,6 +16,9 @@ docker run -d -p 5555:5432
 <p> 
 -e POSTGRES_USER=extraordinaryit 
 <p/>
+<p>
+-e POSTGRES_DB=deliverformedb
+<p/>
 postgres:9.6
 
 <br/>

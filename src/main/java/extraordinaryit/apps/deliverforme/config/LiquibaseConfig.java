@@ -47,6 +47,7 @@ public class LiquibaseConfig {
     @Value("${spring.datasource.ssl.enabled}")
     private boolean sslConnection;
 
+
     @Bean
     public DataSource getDataSource() {
         LOG.info(String.format("Data Source : CorteX database configuration : %n" +

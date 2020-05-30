@@ -44,22 +44,40 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         if (alreadySetup)
             return;
 
-        Privilege readPrivilege
-                = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        Privilege writePrivilege
-                = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
+        Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
+        Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE");
 
-        List<Privilege> adminPrivileges = Arrays.asList(
-                readPrivilege, writePrivilege);
-        createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
+        List<Privilege> adminPrivileges = Arrays.asList(readPrivilege, writePrivilege);
+
+        createRoleIfNotFound("ROLE_BUSINESS_USER", adminPrivileges);
+        createRoleIfNotFound("ROLE_DRIVER", Arrays.asList(readPrivilege));
         createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
 
-        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        Role businessRole = roleRepository.findByName("ROLE_BUSINESS_USER");
+        Role driverRole = roleRepository.findByName("ROLE_DRIVER");
+        Role userRole = roleRepository.findByName("ROLE_USER");
+
         User user = new User();
-        user.setName("Test");
-        user.setSurname("Test");
-        user.setEmail("test@test.com");
-        user.setRoles(Arrays.asList(adminRole));
+        user.setName("Sipho");
+        user.setSurname("Business");
+        user.setEmail("testbusiness@deliverforme.com");
+        user.setRoles(Arrays.asList(businessRole));
+        user.setEnabled(true);
+        userRepository.save(user);
+
+        user = new User();
+        user.setName("Thabo");
+        user.setSurname("Driver");
+        user.setEmail("testdriver@deliverforme.com");
+        user.setRoles(Arrays.asList(driverRole));
+        user.setEnabled(true);
+        userRepository.save(user);
+
+        user = new User();
+        user.setName("Sabelo");
+        user.setSurname("User");
+        user.setEmail("testuser@gmail.com");
+        user.setRoles(Arrays.asList(driverRole));
         user.setEnabled(true);
         userRepository.save(user);
 

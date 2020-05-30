@@ -1,9 +1,16 @@
 server:
   port: 8083
+  servlet:
+    context-path: /deliverformeaapi
 
 logging:
-  file: ./logs/app.log
-  maxhistory: 30
+#  file: ./logs/app.log
+#  maxhistory: 30
+  level:
+    root: INFO
+  pattern:
+    console: '%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n'
+  path: logs
 
 spring:
   datasource:
@@ -33,3 +40,4 @@ spring:
           auto: update
         default_schema: deliverforme
         ddl-auto: create
+
