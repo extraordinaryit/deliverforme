@@ -24,7 +24,7 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <nodeVersion>v6.9.1</nodeVersion>
-                            <installDirectory>./node</installDirectory>
+                            <installDirectory>src/main/deliverformemobile</installDirectory>
                         </configuration>
                     </execution>
 
