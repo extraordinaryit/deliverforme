@@ -8,6 +8,12 @@
     <artifactId>deliverforme-mobile-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <parent>
+        <groupId>extraordinaryit.apps</groupId>
+        <artifactId>deliverforme-system</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <build>
         <plugins>
 

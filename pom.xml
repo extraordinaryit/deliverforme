@@ -16,25 +16,20 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>bakend-end-api</module>
+        <module>deliverforme-backend-api</module>
         <module>deliverforme-mobile-app</module>
     </modules>
+
+    <properties>
+        <postgres.version>42.2.9</postgres.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.2.9</version>
+            <version>${postgres.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
