@@ -33,3 +33,5 @@ build/
 logs
 
 /node_modules
+
+deliverforme-mobile-app/src/main/node/node/node_modules/
