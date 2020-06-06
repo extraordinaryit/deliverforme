@@ -29,27 +29,26 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <nodeVersion>v6.9.1</nodeVersion>
+                            <nodeVersion>v10.14.2</nodeVersion>
                             <yarnVersion>v1.6.0</yarnVersion>
                             <installDirectory>src/main/deliverforme-mobile</installDirectory>
                         </configuration>
                     </execution>
 
                     <execution>
-                    <id>yarn install</id>
-                    <goals>
-                        <goal>yarn</goal>
-                    </goals>
-                    <configuration>
-                        <arguments>install</arguments>
-                        <workingDirectory>src/main/deliverforme-mobile</workingDirectory>
-                    </configuration>
+                        <id>yarn install</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                            <workingDirectory>src/main/deliverforme-mobile</workingDirectory>
+                        </configuration>
                     </execution>
 
                 </executions>
             </plugin>
         </plugins>
-
 
 
     </build>
