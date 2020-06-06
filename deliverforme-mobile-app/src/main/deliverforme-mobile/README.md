@@ -1,4 +1,4 @@
-# Ionic React Conference Application
+# Deliver For Me Mobile Application
 
 
 This application is purely a kitchen-sink demo of the Ionic Framework and React.

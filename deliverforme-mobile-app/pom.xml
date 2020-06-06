@@ -29,7 +29,7 @@
                         </goals>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <nodeVersion>v8.11.1</nodeVersion>
+                            <nodeVersion>v6.9.1</nodeVersion>
                             <yarnVersion>v1.6.0</yarnVersion>
                             <installDirectory>src/main/deliverforme-mobile</installDirectory>
                         </configuration>
