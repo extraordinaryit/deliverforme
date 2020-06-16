@@ -8,5 +8,6 @@
 <include  file="liquibase\1.0.0\CreateSchema.xml"/>
 
 <include  file="liquibase\1.0.0\CreateUserManagementTables.xml"/>
+<include  file="liquibase\1.0.0\insert-setup-data.xml"/>
 
 </databaseChangeLog>

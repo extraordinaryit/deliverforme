@@ -6,5 +6,46 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+    <changeSet author="Thabane" id="insert-privileges">
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO deliverforme.privilege (id, name) VALUES (1, 'READ_PRIVILEGE');
+            INSERT INTO deliverforme.privilege (id, name) VALUES (2, 'WRITE_PRIVILEGE');
+        </sql>
+    </changeSet>
+
+    <changeSet author="Thabane" id="insert-roles">
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO deliverforme.role (id, name) VALUES (1, 'ROLE_BUSINESS_USER');
+            INSERT INTO deliverforme.role (id, name) VALUES (2, 'ROLE_DRIVER');
+            INSERT INTO deliverforme.role (id, name) VALUES (3, 'ROLE_USER');
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="Thabane" id="insert-role-privileges">
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO deliverforme.roles_privileges (role_id, privilege_id) VALUES (1, 1);
+            INSERT INTO deliverforme.roles_privileges (role_id, privilege_id) VALUES (1, 2);
+            INSERT INTO deliverforme.roles_privileges (role_id, privilege_id) VALUES (2, 1);
+            INSERT INTO deliverforme.roles_privileges (role_id, privilege_id) VALUES (3, 1);
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="Thabane" id="insert-default-users">
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO deliverforme."user" (id, email, enabled, name, surname, token_expired) VALUES (1, 'testbusiness@deliverforme.com', true, 'Sipho', 'Business', false);
+            INSERT INTO deliverforme."user" (id, email, enabled, name, surname, token_expired) VALUES (2, 'testdriver@deliverforme.com', true, 'Thabo', 'Driver', false);
+            INSERT INTO deliverforme."user" (id, email, enabled, name, surname, token_expired) VALUES (3, 'testuser@gmail.com', true, 'Sabelo', 'User', false);
+        </sql>
+    </changeSet>
+
+    <changeSet author="Thabane" id="grant-default-users-roles">
+        <sql dbms="postgresql" endDelimiter=";">
+            INSERT INTO deliverforme.users_roles (user_id, role_id) VALUES (1, 1);
+            INSERT INTO deliverforme.users_roles (user_id, role_id) VALUES (2, 2);
+            INSERT INTO deliverforme.users_roles (user_id, role_id) VALUES (3, 2);
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

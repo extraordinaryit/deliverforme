@@ -11,6 +11,9 @@
 
 docker run -d -p 5555:5432
 <p> 
+--name deliverforme-db
+<p/> 
+<p> 
 -e POSTGRES_PASSWORD=extraordinaryit
 <p/> 
 <p> 
@@ -19,7 +22,7 @@ docker run -d -p 5555:5432
 <p>
 -e POSTGRES_DB=deliverformedb
 <p/>
-postgres:9.6
+postgres:12.3
 
 <br/>
 
