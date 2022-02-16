@@ -21,7 +21,7 @@
     </modules>
 
     <properties>
-        <postgres.version>42.2.9</postgres.version>
+        <postgres.version>42.3.3</postgres.version>
     </properties>
 
     <dependencies>
